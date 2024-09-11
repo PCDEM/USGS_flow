@@ -34,6 +34,6 @@ USGSflow <- function(sites, start_yr, param = '00060', ptile = FALSE){
     ) 
   
     # Save flow data
-    write.xlsx(flow, paste0('USGS_PC_Flow_',start_yr,'_',year(Sys.Date()),'.xlsx'))
+    write.xlsx(flow, paste0('Data/TEST_',start_yr,'_',year(Sys.Date()),'.xlsx'))
   
 }
