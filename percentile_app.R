@@ -7,6 +7,7 @@ library(dplyr)
 library(plotly)
 library(tidyr)
 
+
 # Load the datasets:
 hdi <- read_excel('Data/MASTER_Flow_HDI_2006-2024.xlsx')
 tran <- read_excel('Data/MASTER_Flow_Transect_2003-2024.xlsx')
@@ -29,6 +30,7 @@ options(warn = -1)
 
 
 ui <- fluidPage(
+  titlePanel("Flow Outliers for USGS/HDI/PCDEM Data"),
   sidebarLayout(
     sidebarPanel(width=2,
                  # Set error message color:
@@ -39,11 +41,11 @@ ui <- fluidPage(
                     font-size: 20px}'))),
                  selectInput('site', label = 'Site', choices = sort(unique(dat$Site)), selected = '01-09')
     ),
-    mainPanel(textOutput('message'), 
-              tags$head(tags$style("#message{color: red;
-                                   font-size: 20px;
-                                   }")),
-              plotlyOutput('ts') %>% withSpinner(color = "blue")
+    mainPanel(tabsetPanel(id = "tabs"),
+              # tags$head(tags$style("#message{color: red;
+              #                      font-size: 20px;
+              #                      }")),
+              # plotlyOutput('ts') %>% withSpinner(color = "blue")
     )
   )
 )
